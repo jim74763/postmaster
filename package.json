@@ -1,0 +1,41 @@
+{
+  "name": "google-postmaster-mcp",
+  "version": "0.1.0",
+  "description": "MCP server for Google Gmail Postmaster Tools API v2.",
+  "type": "module",
+  "bin": {
+    "google-postmaster-mcp": "./dist/src/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "oauth": "node dist/scripts/google-oauth.js",
+    "start": "node dist/src/index.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "mcp",
+    "google",
+    "gmail",
+    "postmaster",
+    "postmaster-tools"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "@cfworker/json-schema": "^4.1.1",
+    "@modelcontextprotocol/server": "2.0.0-alpha.2",
+    "dotenv": "^17.4.2",
+    "google-auth-library": "^10.6.2",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "typescript": "^6.0.3"
+  }
+}
