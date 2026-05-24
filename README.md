@@ -1,5 +1,7 @@
 # Google Postmaster MCP Server
 
+> **Note:** This project is not actively maintained. If you find a bug, feel free to [open a PR](../../pulls) or reach out at [postmaster-mcp@jimvanduijsen.nl](mailto:postmaster-mcp@jimvanduijsen.nl).
+
 This is a stdio MCP server for the Gmail Postmaster Tools API v2. It exposes tools for listing registered domains, reading domain metadata, checking compliance status, and querying Postmaster traffic metrics.
 
 Google requires OAuth 2.0 for Postmaster Tools API requests. Use a Google account that has access to the domains in Postmaster Tools.
