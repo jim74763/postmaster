@@ -111,7 +111,7 @@ server.once("error", (error: NodeJS.ErrnoException) => {
       `Could not start OAuth callback listener on ${address}: this environment blocked local port binding.`,
     );
     console.error(
-      "Run pnpm oauth from a normal terminal, outside the sandboxed Codex command runner.",
+      "Run pnpm oauth from a normal terminal, outside any sandboxed command runner.",
     );
   } else {
     console.error(
