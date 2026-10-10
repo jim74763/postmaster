@@ -1,6 +1,8 @@
 # Google Postmaster MCP Server
 
-> **Note:** This project is not actively maintained. If you find a bug, feel free to [open a PR](../../pulls) or reach out at [postmaster-mcp@jimvanduijsen.nl](mailto:postmaster-mcp@jimvanduijsen.nl).
+> **Vibe coded:** This project is almost fully AI generated (written with Claude). It was built quickly and has had limited manual review and no automated tests, so read the code before trusting it with anything important.
+>
+> It is also not actively maintained. If you find a bug, feel free to [open a PR](../../pulls) or reach out at [postmaster-mcp@jimvanduijsen.nl](mailto:postmaster-mcp@jimvanduijsen.nl).
 
 This is a stdio MCP server for the Gmail Postmaster Tools API v2. It exposes tools for listing registered domains, reading domain metadata, checking compliance status, and querying Postmaster traffic metrics.
 
@@ -45,7 +47,7 @@ POSTMASTER_CLIENT_SECRET=your-client-secret
 POSTMASTER_REFRESH_TOKEN=
 ```
 
-Install and build:
+Requires Node.js 20 or newer and [pnpm](https://pnpm.io). Install and build:
 
 ```bash
 pnpm install
@@ -79,16 +81,16 @@ On macOS, Claude Desktop reads:
 ~/Library/Application Support/Claude/claude_desktop_config.json
 ```
 
-Add this MCP server entry. Use the absolute path to this project:
+Add this MCP server entry. Replace `/absolute/path/to/postmaster` with the path to this project:
 
 ```json
 {
   "mcpServers": {
     "google-postmaster": {
-      "command": "/opt/homebrew/bin/node",
-      "args": ["/Users/jimvanduijsen/Programming/GitHub/postmaster/dist/src/index.js"],
+      "command": "node",
+      "args": ["/absolute/path/to/postmaster/dist/src/index.js"],
       "env": {
-        "POSTMASTER_DOTENV_FILE": "/Users/jimvanduijsen/Programming/GitHub/postmaster/.env"
+        "POSTMASTER_DOTENV_FILE": "/absolute/path/to/postmaster/.env"
       }
     }
   }
@@ -102,7 +104,7 @@ Fully quit and restart Claude Desktop after changing this file.
 From this project directory, add the server to Claude Code local config:
 
 ```bash
-claude mcp add-json --scope local google-postmaster '{"command":"/opt/homebrew/bin/node","args":["/Users/jimvanduijsen/Programming/GitHub/postmaster/dist/src/index.js"],"env":{"POSTMASTER_DOTENV_FILE":"/Users/jimvanduijsen/Programming/GitHub/postmaster/.env"}}'
+claude mcp add-json --scope local google-postmaster '{"command":"node","args":["/absolute/path/to/postmaster/dist/src/index.js"],"env":{"POSTMASTER_DOTENV_FILE":"/absolute/path/to/postmaster/.env"}}'
 ```
 
 Check the connection:
@@ -202,6 +204,11 @@ server from another working directory.
 ## API Notes
 
 The server targets `https://gmailpostmastertools.googleapis.com/v2`. By default, `postmaster_query_domain_stats` queries `SPAM_RATE` if no metrics are supplied. Use `postmaster_metric_reference` to see supported standard metrics and required filter syntax.
+
+## Notes
+
+This server uses a pre-release (alpha) version of the MCP TypeScript SDK, so
+breaking changes upstream are possible.
 
 ## References
 
